@@ -54,7 +54,8 @@ st.markdown("##")
 
 # ---- TOP KPI'S ----
 
-total_sales = df_selection["Total"].sum()  # Assuming "Total" column is numeric
+# Filter out non-numeric values in the "Total" column and then sum
+total_sales = df_selection["Total"].apply(pd.to_numeric, errors='coerce').sum()
 average_rating = round(df_selection["Rating"].mean(), 1)
 star_rating = ":star:" * int(round(average_rating, 0))
 average_sale_by_transaction = round(df_selection["Total"].mean(), 2)
