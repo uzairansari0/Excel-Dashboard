@@ -112,7 +112,7 @@ st.markdown("---")
 # SALES BY PRODUCT LINE [BAR CHART]
 
 sales_by_product_line = (
-    df_selection.groupby(by=["Product line"]).sum()[["Total"]].sort_values(by="Total")
+    df_selection.groupby(by=["Product line"]).sum(numeric_only=True)[["Total"]].sort_values(by="Total")
 )
 fig_product_sales = px.bar(
     sales_by_product_line,
@@ -150,7 +150,7 @@ fig_hourly_sales.update_layout(
 # ---- TOP SELLING PRODUCTS [DONUT CHART] ----
 
 top_selling_products = (
-    df_selection.groupby(by=["Product line"]).sum()[["Quantity"]]
+    df_selection.groupby(by=["Product line"]).sum(numeric_only=True)[["Quantity"]]
     .sort_values(by="Quantity", ascending=False)
 )
 
