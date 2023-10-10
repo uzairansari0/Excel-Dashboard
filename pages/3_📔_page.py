@@ -70,7 +70,8 @@ date_range = st.sidebar.slider(
 # Filter the data based on the selected date range
 start_date = pd.to_datetime(date_range[0])
 end_date = pd.to_datetime(date_range[1])
-filtered_data = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
+filtered_data = df[(df['City'].isin(city)) & (df['Customer_type'].isin(customer_type)) & (df['Gender'].isin(gender)) & (df['Date'] >= start_date) & (df['Date'] <= end_date)]
+print(filtered_data.shape)
 
 
 
