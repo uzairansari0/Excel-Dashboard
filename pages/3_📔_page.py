@@ -22,8 +22,7 @@ def get_data_from_excel():
         nrows=1000
     )
 
-    # df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
-    # df["hour"] = df["Time"].dt.hour 
+    df["hour"] = pd.to_datetime(df["Time"], format = "%H:%M:%S").dt.hour
     return df
 
 
@@ -78,7 +77,7 @@ filtered_data = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
 
 
 df_selection = df.query(
-    "City == @city & Customer_type == @customer_type & Gender == @gender "
+    "City == @city & Customer_type == @customer_type & Gender == @gender & Date == @filtered_data "
 )
 
 # st.dataframe(df_selection)
