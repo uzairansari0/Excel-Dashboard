@@ -5,7 +5,7 @@ import datetime
 from datetime import time
 import plotly.graph_objects as go
 
-st.set_page_config(page_title="Sales Dashboard Page 1",
+st.set_page_config(page_title="Sales Dashboard Page 4",
                    page_icon=":bar_chart:",
                    layout="wide")
 
