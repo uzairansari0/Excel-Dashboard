@@ -8,19 +8,13 @@ st.set_page_config(page_title="Sales Dashboard Page 1",
 
 @st.experimental_memo
 def get_data_from_excel():
-    df = pd.read_excel(
-        io="supermarkt_sales.xlsx",
-        engine='openpyxl',
-        sheet_name='Sales',
-        skiprows=3,
-        usecols='B:R',
-        nrows=1000
-    )
+    df = pd.read_csv("SampleSuperstore.csv", skip_blank_lines=True, na_values=["NA", "N/A"])
+    df.dropna()
 
-    df["hour"] = pd.to_datetime(df["Time"], format = "%H:%M:%S").dt.hour
+    df["hour"] = pd.to_datetime(df["Time"], format="%H:%M").dt.hour
     return df
-
 df = get_data_from_excel()
+
 # st.dataframe(df)
 
 # ----sidebar----
