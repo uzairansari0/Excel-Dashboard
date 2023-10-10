@@ -121,29 +121,29 @@ try:
 
   # ---- TOP SELLING PRODUCTS [DONUT CHART] ----
 
-    top_selling_regions = (
-        df_selection.groupby(by=["Region"]).sum(numeric_only=True)[["Quantity"]]
-        .sort_values(by="Quantity", ascending=False)
-    )
-
-    fig_top_regions = go.Figure(
-        go.Pie(
-            labels=top_selling_regions.index,
-            values=top_selling_regions["Quantity"],
-            # hole=0.5
-        )
-    )
-
-    fig_top_regions.update_traces(
-        textposition="inside",
-        textinfo="percent+label",
-        marker=dict(colors=px.colors.qualitative.Alphabet)
-    )
-
-    fig_top_regions.update_layout(
-        title="<b>Top Selling Regions</b>",
-        template="plotly_white"
-    )
+  top_selling_regions = (
+      df_selection.groupby(by=["Region"]).sum(numeric_only=True)[["Quantity"]]
+      .sort_values(by="Quantity", ascending=False)
+  )
+  
+  fig_top_regions = go.Figure(
+      go.Pie(
+          labels=top_selling_regions.index,
+          values=top_selling_regions["Quantity"],
+          # hole=0.5
+      )
+  )
+  
+  fig_top_regions.update_traces(
+      textposition="inside",
+      textinfo="percent+label",
+      marker=dict(colors=px.colors.qualitative.Alphabet)
+  )
+  
+  fig_top_regions.update_layout(
+      title="<b>Top Selling Regions</b>",
+      template="plotly_white"
+  )
   
   left_column, right_column = st.columns(2)
   left_column.plotly_chart(fig_hourly_sales, use_container_with = True)
@@ -153,6 +153,7 @@ try:
   left_column, right_column = st.columns(2)
   left_column.plotly_chart(fig_top_products, use_container_width=True)
   right_column.plotly_chart(fig_top_regions, use_container_width=True)
+
 except ValueError: 
   st.subheader(':point_left: Please Filter:')
 # --- HIDE STREAMLIT STYLE ---
