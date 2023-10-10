@@ -22,8 +22,8 @@ def get_data_from_excel():
         nrows=1000
     )
 
-    df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")  # Convert "Time" to datetime
-    df["hour"] = df["Time"].dt.hour  # Extract the hour
+    # df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
+    # df["hour"] = df["Time"].dt.hour 
     return df
 
 
