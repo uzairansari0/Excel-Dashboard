@@ -75,7 +75,7 @@ filtered_data = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
 
 
 df_selection = df.query(
-    "City == @city & Customer_type == @customer_type & Gender == @gender"
+    "City == @city & Customer_type == @customer_type & Gender == @gender & Date == @date_range"
 )
 
 # st.dataframe(df_selection)
