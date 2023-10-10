@@ -22,7 +22,7 @@ def get_data_from_excel():
         nrows=1000
     )
 
-    df["hour"] = pd.to_datetime(df["Time"], format="%H:%M:%S").dt.hour
+    df["hour"] = df["Time"].dt.hour
     return df
 
 
@@ -131,7 +131,7 @@ fig_product_sales.update_layout(
 
 # SALES BY HOUR [BAR CHART]
 
-sales_by_hour = df_selection.groupby(by=["hour"]).sum()[["Total"]]
+sales_by_hour = df_selection.groupby(by=["hour"]).sum(numeric_only=True)[["Total"]]
 fig_hourly_sales = px.bar(
     sales_by_hour,
     x=sales_by_hour.index,
