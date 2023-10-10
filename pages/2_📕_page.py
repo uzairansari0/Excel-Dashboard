@@ -6,7 +6,7 @@ st.set_page_config(page_title="Sales Dashboard Page 1",
                    page_icon=":bar_chart:",
                    layout="wide")
 
-@st.experimental_memo 
+@st.experimental_memo
 def get_data_from_excel():
     df = pd.read_excel(
         io="supermarkt_sales.xlsx",
@@ -82,15 +82,15 @@ try:
   # SALES BY PRODUCT LINE [BAR CHART]
   
   sales_by_product_line = (
-      df_selection.groupby(by=["Product line"]).sum()[["Total"]].sort_values(by="Total")
+      df_selection.groupby(by=["Product line"]).sum(numeric_only=True)[["Total"]].sort_values(by="Total")
   )
   fig_product_sales = px.bar(
       sales_by_product_line,
       x = "Total",
       y = sales_by_product_line.index,
-      orientation = "h",
-      title = "<b>Sales by Product Line</b>",
-      color_discrete_sequence =['#0083B8'] * len(sales_by_product_line),
+      orientation="h",
+      title="<b>Sales by Product Line</b>",
+      color_discrete_sequence=['#0083B8'] * len(sales_by_product_line),
       template = "plotly_white"
   )
   
@@ -103,7 +103,7 @@ try:
   
   # SALES BY HOUR [BAR CHART]
   
-  sales_by_hour = df_selection.groupby(by = ["hour"]).sum()[["Total"]]
+  sales_by_hour = df_selection.groupby(by=["hour"]).sum(numeric_only=True)[["Total"]]
   fig_hourly_sales = px.bar(
       sales_by_hour,
       x = sales_by_hour.index,
@@ -123,7 +123,7 @@ try:
   left_column.plotly_chart(fig_hourly_sales, use_container_with = True)
   right_column.plotly_chart(fig_product_sales, use_container_with = True)
 except ValueError: 
-  st.subheader(":point_left: Please Filter")
+  st.subheader(':point_left: Please Filter:')
 # --- HIDE STREAMLIT STYLE ---
 
 hide_st_style = """
