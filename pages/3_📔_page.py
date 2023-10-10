@@ -3,7 +3,6 @@ import plotly.express as px
 import streamlit as st
 import plotly.graph_objects as go
 import datetime
-from datetime import datetime
 
 
 st.set_page_config(page_title="Sales Dashboard",
@@ -23,6 +22,7 @@ def get_data_from_excel():
     )
 
     df["hour"] = pd.to_datetime(df["Time"], format = "%H:%M:%S").dt.hour
+    df['Date'] = pd.to_datetime(df['Date'], format="%Y-%m-%d")
     return df
 
 
@@ -50,8 +50,6 @@ gender = st.sidebar.multiselect(
     options=df["Gender"].unique(),
     default=df["Gender"].unique()
 )
-
-df['Date'] = pd.to_datetime(df['Date'], format="%Y-%m-%d")
 
 # Get the min and max dates from the date column
 min_date = df['Date'].min().date()
