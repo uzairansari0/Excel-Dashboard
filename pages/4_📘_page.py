@@ -51,7 +51,7 @@ gender = st.sidebar.multiselect(
 )
 
 dates = st.sidebar.date_input(
-    ":calendar: Please select the Date",
+    "Please select the Date",
     datetime.date(2021, 1, 1),
 )
 
