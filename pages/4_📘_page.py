@@ -52,7 +52,7 @@ gender = st.sidebar.multiselect(
 
 dates = st.sidebar.date_input(
     ":calendar: Please select the Date",
-    datetime.date(2021, 1, 1).unique(),
+    datetime.date(df[date]),
 )
 
 # slider_date = st.sidebar.slider(
