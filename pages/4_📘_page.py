@@ -51,8 +51,8 @@ gender = st.sidebar.multiselect(
 )
 
 dates = st.sidebar.date_input(
-    ":date: Please select the Date",
-    datetime.date(2021, 1, 1),
+    ":calendar: Please select the Date",
+    datetime.date(2021, 1, 1).unique(),
 )
 
 # slider_date = st.sidebar.slider(
